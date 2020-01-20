@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/menuFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.lokey_v4.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/activityLocation"
+        android:name="com.example.lokey_v4.ActivityLocation"
+        android:label="activity_location"
+        tools:layout="@layout/activity_location" />
+    <activity
+        android:id="@+id/activityMusic"
+        android:name="com.example.lokey_v4.ActivityMusic"
+        android:label="activity_music"
+        tools:layout="@layout/activity_music" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.lokey_v4.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_activityMusic"
+            app:destination="@id/activityMusic" />
+        <action
+            android:id="@+id/action_menuFragment_to_activityLocation"
+            app:destination="@id/activityLocation" />
+    </fragment>
+</navigation>
