@@ -31,5 +31,13 @@
         <action
             android:id="@+id/action_menuFragment_to_activityLocation"
             app:destination="@id/activityLocation" />
+        <action
+            android:id="@+id/action_menuFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.lokey_v4.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
 </navigation>
