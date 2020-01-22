@@ -6,13 +6,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +25,6 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 
@@ -42,6 +40,8 @@ public class ActivityLocation extends FragmentActivity
     private TextView mLocationView;
     private Location location;
     private TextView locationTv;
+
+    MediaPlayer song;
 
     // lists for permissions
     private ArrayList<String> permissionsToRequest;
@@ -81,8 +81,6 @@ public class ActivityLocation extends FragmentActivity
             }
         }
 
-
-
         mLocationView = new TextView(this);
 //        setContentView(mLocationView);
 
@@ -94,10 +92,8 @@ public class ActivityLocation extends FragmentActivity
 
         fusedLocationClient = getFusedLocationProviderClient(this);
 
-
-
+        song = MediaPlayer.create(this, R.raw.blessed);
     }
-
 
     private ArrayList<String> permissionsToRequest(ArrayList<String> wantedPermissions) {
         ArrayList<String> result = new ArrayList<>();
@@ -179,14 +175,10 @@ public class ActivityLocation extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
-//        mLocationView.setText(String.format("Location recieved:%s", location.toString()));
-//        Log.println(Log.ERROR," ", "mihai" + location.toString());
-
+        //TODO: Check against predefine geolocations
         if (location != null) {
             locationTv.setText("Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
         }
-
-
     }
 
     @Override
@@ -204,17 +196,6 @@ public class ActivityLocation extends FragmentActivity
 
     }
 
-//    @Override
-//    public void onConnected(@Nullable Bundle bundle) {
-//        fusedLocationClient.getLastLocation()
-//                .addOnSuccessListener(this, location -> {
-//                    if(location != null){
-//                        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-//                        mLocationRequest.setInterval(1000); // Every second
-//                    }
-//                });
-//    }
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this,
@@ -229,7 +210,21 @@ public class ActivityLocation extends FragmentActivity
 
         if (fusedLocationClient != null) {
             locationTv.setText("Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
+            song.start();
         }
+
+//        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+//            if (location != null) {
+//                // Logic to handle location object
+//                LocationServices.ge
+//            } else {
+//                // Handle null case or request periodic updates
+//                mLocationRequest.setInterval(1000);
+//            }
+//        });
+
+//        LocationServices l = LocationServices.getFusedLocationProviderClient(this).getLastLocation();
+
 
         startLocationUpdates();
     }
@@ -295,7 +290,6 @@ public class ActivityLocation extends FragmentActivity
                         mGoogleApiClient.connect();
                     }
                 }
-
                 break;
         }
     }
