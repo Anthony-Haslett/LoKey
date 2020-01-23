@@ -2,7 +2,7 @@ LoKey_V4
 
 Upcoming features:
 - Location: Google Maps
-- Music: Spotify
+- Music: Spotify, https://towardsdatascience.com/using-the-spotify-api-with-your-android-application-the-essentials-1a3c1bc36b9e
 
 - CLI Tools: Firebase CLI, Google Cloud Platform CLI
 
