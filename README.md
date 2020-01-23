@@ -4,6 +4,8 @@ Upcoming features:
 - Location: Google Maps
 - Music: Spotify
 
+- CLI Tools: Firebase CLI, Google Cloud Platform CLI
+
 - CI/CD pipeline: https://github.com/Anthony-Haslett/LoKey/new/master?filename=.github%2Fworkflows%2Fgoogle.yml&workflow_template=google
 
 - Setup firebase / Google Cloud Platform
