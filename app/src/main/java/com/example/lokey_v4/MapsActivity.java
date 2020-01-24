@@ -1,27 +1,42 @@
 package com.example.lokey_v4;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.location.Location;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingClient;
+import com.google.android.gms.location.GeofencingRequest;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener, OnMapReadyCallback {
+        GoogleMap.OnMyLocationClickListener, OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
+
+    MediaPlayer song;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +53,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
+
                         if (location != null) {
                             // Logic to handle location object
 
@@ -45,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                         }
                     }
                 });
+
+        song = MediaPlayer.create(this, R.raw.blessed);
     }
 
 
@@ -61,10 +79,19 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Salford and move the camera
+        LatLng gym = new LatLng(53.489500, -2.287750);
+        mMap.addMarker(new MarkerOptions().position(gym)
+                .title("Gym Jams")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.gym)));
+
+
+        LatLng work = new LatLng(53.4864207, -2.2734424);
+        mMap.addMarker(new MarkerOptions().position(work)
+                .title("University Jams")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.student)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(work));
+
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
@@ -83,5 +110,21 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        double workLat = location.getLatitude();
+        double workLong = location.getLongitude();
+        double latLong = workLat + workLong;
+
+        if(workLat == 2.2426) {
+            Toast.makeText(this, "Long!", Toast.LENGTH_SHORT).show();
+        }
+
+        if(workLong == 53.4808) {
+            Toast.makeText(this, "Lat!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

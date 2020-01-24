@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "42109791448",
+    "firebase_url": "https://lokey-256319.firebaseio.com",
+    "project_id": "lokey-256319",
+    "storage_bucket": "lokey-256319.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42109791448:android:d2f01023d769b2bf1fbbad",
+        "android_client_info": {
+          "package_name": "com.example.lokey_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42109791448-hrjskjeq1apnh19a8rtorm0etm9v4c4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVFXoUhjBuLdyKkN7gWuXTjHpVHjnqVO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42109791448-hrjskjeq1apnh19a8rtorm0etm9v4c4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42109791448:android:472466b20b88d7691fbbad",
+        "android_client_info": {
+          "package_name": "com.example.lokey_v4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42109791448-h8ssn1dlnmrg682t6uqv0ouicpk9uid8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lokey_v4",
+            "certificate_hash": "ba9c3e1a3214efe4f6d7a32534bbb3a3e8104b8e"
+          }
+        },
+        {
+          "client_id": "42109791448-hrjskjeq1apnh19a8rtorm0etm9v4c4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVFXoUhjBuLdyKkN7gWuXTjHpVHjnqVO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42109791448-hrjskjeq1apnh19a8rtorm0etm9v4c4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -36,7 +36,7 @@ public class MenuFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    Button musicButton, locationButton;
+    Button musicButton, locationButton, jamMapButton;
     NavController navController;
 
 
@@ -78,20 +78,13 @@ public class MenuFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
         musicButton = view.findViewById(R.id.music_button);
-        musicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_menuFragment_to_activityMusic);
-            }
-        });
+        musicButton.setOnClickListener(view12 -> navController.navigate(R.id.action_menuFragment_to_activityMusic));
 
         locationButton = view.findViewById(R.id.location_button);
-        locationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_menuFragment_to_activityLocation);
-            }
-        });
+        locationButton.setOnClickListener(view1 -> navController.navigate(R.id.action_menuFragment_to_activityLocation));
+
+        jamMapButton = view.findViewById(R.id.jamMap);
+        jamMapButton.setOnClickListener(v -> navController.navigate(R.id.action_menuFragment_to_mapsActivity));
     }
 
     @Override

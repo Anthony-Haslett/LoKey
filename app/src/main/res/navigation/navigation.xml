@@ -6,11 +6,6 @@
     app:startDestination="@id/menuFragment">
 
     <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.lokey_v4.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <activity
         android:id="@+id/activityLocation"
         android:name="com.example.lokey_v4.ActivityLocation"
         android:label="activity_location"

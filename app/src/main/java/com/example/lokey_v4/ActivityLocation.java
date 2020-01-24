@@ -225,7 +225,6 @@ public class ActivityLocation extends FragmentActivity
 
 //        LocationServices l = LocationServices.getFusedLocationProviderClient(this).getLastLocation();
 
-
         startLocationUpdates();
     }
 
