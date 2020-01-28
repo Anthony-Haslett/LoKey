@@ -19,5 +19,3 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./gradlew build
-    - name: GitHub Action for Firebase
-      uses: w9jds/firebase-action@v1.1.0
