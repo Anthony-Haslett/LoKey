@@ -1,4 +1,4 @@
-LoKey_V4
+Project LoKey
 
 Upcoming features:
 - Location: Google Maps

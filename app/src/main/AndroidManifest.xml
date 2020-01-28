@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lokey_v4">
+    package="com.project.lokey">
     <!--    <uses-permission android:name="android.permission.CAMERA" />-->
     <!--    <uses-permission android:name="android.permission.INTERNET"></uses-permission>-->
     <!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
@@ -47,12 +47,15 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <receiver android:name=".MapsActivity"/>
+        <receiver android:name="com.project.lokey.MapsActivity"/>
 
         <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".ActivityMusic">
+            android:name="com.project.lokey.MapsActivity"
+            android:label="@string/title_activity_maps"/>
+
+        <activity android:name=".ActivityRemotePlayer"/>
+
+        <activity android:name="com.project.lokey.ActivityMusic">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -64,8 +67,8 @@
                     android:host="twitter.com" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityLocation" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.project.lokey.ActivityLocation" />
+        <activity android:name="com.project.lokey.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

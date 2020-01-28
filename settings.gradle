@@ -1,2 +1,2 @@
 include ':app', ':spotify-app-remote'
-rootProject.name='LoKey_V4'
+rootProject.name='LoKey'
