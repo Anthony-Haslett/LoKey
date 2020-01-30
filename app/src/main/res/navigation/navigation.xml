@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_menuFragment_to_activityRemotePlayer"
             app:destination="@id/activityRemotePlayer" />
+        <action
+            android:id="@+id/action_menuFragment_to_activityGeoFence"
+            app:destination="@id/activityGeoFence" />
+        <action
+            android:id="@+id/action_menuFragment_to_activityGeo"
+            app:destination="@id/activityGeo" />
     </fragment>
     <activity
         android:id="@+id/mapsActivity"
@@ -43,4 +49,13 @@
         android:name="com.project.lokey.ActivityRemotePlayer"
         android:label="app_remote_layout"
         tools:layout="@layout/app_remote_layout" />
+    <activity
+        android:id="@+id/activityGeoFence"
+        android:name="com.project.lokey.ActivityGeoFence"
+        android:label="activity_geo_fence"
+        tools:layout="@layout/activity_geo_fence" />
+    <activity
+        android:id="@+id/activityGeo"
+        android:name="com.project.lokey.ActivityGeo"
+        android:label="ActivityGeo" />
 </navigation>

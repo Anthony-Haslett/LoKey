@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.lokey">
-    <!--    <uses-permission android:name="android.permission.CAMERA" />-->
-    <!--    <uses-permission android:name="android.permission.INTERNET"></uses-permission>-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-    <!--    <uses-permission android:name="android.permission.VIBRATE" />-->
-
+    <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
+    <!-- <uses-permission android:name="android.permission.INTERNET"></uses-permission> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- Required if your app targets Android 10 (API level 29) or higher -->
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Required if your app targets Android 10 (API level 29) or higher -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
 
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-
 
     <application
         android:allowBackup="true"
@@ -26,6 +22,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".ActivityGeoFence"></activity>
+
+        <activity android:name=".ActivityGeo"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,7 +38,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -47,15 +46,30 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <receiver android:name="com.project.lokey.MapsActivity"/>
+        <receiver android:name=".MapsActivity" />
+
+        <receiver
+            android:name=".GeofenceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".GeofenceTransitionsJobIntentService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".GeofenceRegistrationService"
+            android:enabled="true"
+            android:exported="true"/>
 
         <activity
-            android:name="com.project.lokey.MapsActivity"
-            android:label="@string/title_activity_maps"/>
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
 
-        <activity android:name=".ActivityRemotePlayer"/>
+        <activity android:name=".ActivityRemotePlayer" />
 
-        <activity android:name="com.project.lokey.ActivityMusic">
+        <activity android:name=".ActivityMusic">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -63,18 +77,21 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="twitter.com" />
+                    android:host="twitter.com"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name="com.project.lokey.ActivityLocation" />
-        <activity android:name="com.project.lokey.MainActivity">
+
+        <activity android:name=".ActivityLocation" />
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

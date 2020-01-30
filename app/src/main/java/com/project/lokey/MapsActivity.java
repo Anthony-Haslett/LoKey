@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -82,7 +83,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 .title("University Jams")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.student)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(work));
-
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
