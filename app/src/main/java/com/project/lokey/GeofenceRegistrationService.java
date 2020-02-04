@@ -20,13 +20,11 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-/**
- * Created by Manu on 11/24/2017.
- */
-
 public class GeofenceRegistrationService extends IntentService {
 
     private static final String TAG = "GeoIntentService";
+
+    private static final String CHANNEL_ID = "channel_01";
 
     public GeofenceRegistrationService() {
         super(TAG);
@@ -98,20 +96,11 @@ public class GeofenceRegistrationService extends IntentService {
         Notification.Builder notificationBuilder = new Notification.Builder(this);
         notificationBuilder
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-//                .setColor(Color.RED)
                 .setContentTitle(msg)
                 .setContentText("Tap to play University Jams")
                 .setContentIntent(notificationPendingIntent)
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
                 .setAutoCancel(false);
-
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, )
-//                .setSmallIcon(R.mipmap.ic_launcher)
-//                .setContentTitle("My notification")
-//                .setContentText("Much longer text that cannot fit one line...")
-//                .setStyle(new NotificationCompat.BigTextStyle()
-//                        .bigText("Much longer text that cannot fit one line..."))
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         return notificationBuilder.build();
     }

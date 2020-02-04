@@ -111,9 +111,6 @@ public class ActivityRemotePlayer extends FragmentActivity {
 
     private static final String TAG = ActivityRemotePlayer.class.getSimpleName();
 
-//    private static final String CLIENT_ID = "089d841ccc194c10a77afad9e1c11d54";
-//    private static final String REDIRECT_URI = "comspotifytestsdk://callback";
-
     private static final String CLIENT_ID = "d4c71fb43dd44d2c881ee5072454a756";
     private static final String REDIRECT_URI = "com.project.lokey://callback";
 

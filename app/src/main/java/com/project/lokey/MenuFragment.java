@@ -78,17 +78,20 @@ public class MenuFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
         musicButton = view.findViewById(R.id.music_button);
-        musicButton.setOnClickListener(view12 -> navController.navigate(R.id.action_menuFragment_to_activityRemotePlayer));
+        musicButton.setOnClickListener(view12 -> navController
+                .navigate(R.id.action_menuFragment_to_activityRemotePlayer));
 
         locationButton = view.findViewById(R.id.location_button);
-        locationButton.setOnClickListener(view1 -> navController.navigate(R.id.action_menuFragment_to_activityLocation));
+        locationButton.setOnClickListener(view1 -> navController
+                .navigate(R.id.action_menuFragment_to_activityLocation));
 
         jamMapButton = view.findViewById(R.id.jamMap);
-        jamMapButton.setOnClickListener(v -> navController.navigate(R.id.action_menuFragment_to_mapsActivity));
+        jamMapButton.setOnClickListener(v -> navController
+                .navigate(R.id.action_menuFragment_to_mapsActivity));
 
         geoFenceButton = view.findViewById(R.id.geofence_button);
-        geoFenceButton.setOnClickListener(v -> navController.navigate(R.id.action_menuFragment_to_activityGeo));
-
+        geoFenceButton.setOnClickListener(v -> navController
+                .navigate(R.id.action_menuFragment_to_activityGeo));
     }
 
     @Override

@@ -82,7 +82,6 @@ public class ActivityLocation extends FragmentActivity
         }
 
         mLocationView = new TextView(this);
-//        setContentView(mLocationView);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)

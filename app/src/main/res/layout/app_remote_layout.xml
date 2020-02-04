@@ -167,71 +167,72 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/toggle_shuffle_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="56dp"
+        android:layout_height="95dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onToggleShuffleButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.192"
         app:srcCompat="@drawable/btn_shuffle" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/seek_back_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="69dp"
+        android:layout_height="79dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onSeekBack"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.20"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.279"
         app:srcCompat="@drawable/btn_seek_back" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/skip_prev_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="34dp"
+        android:layout_height="70dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onSkipPreviousButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.365"
         app:srcCompat="@drawable/btn_prev" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/play_pause_button"
-        android:layout_width="wrap_content"
-        android:layout_height="96dp"
+        android:layout_width="52dp"
+        android:layout_height="72dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:onClick="onPlayPauseButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.38"
         app:srcCompat="@drawable/btn_play" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/skip_next_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="42dp"
+        android:layout_height="75dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onSkipNextButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.669"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.404"
         app:srcCompat="@drawable/btn_next" />
 
     <androidx.appcompat.widget.AppCompatImageButton
