@@ -1,5 +1,7 @@
 Project LoKey
 
+![Android CI](https://github.com/Anthony-Haslett/LoKey/workflows/Android%20CI/badge.svg)
+
 Upcoming features:
 - Location: Google Maps
 - Music: Spotify, https://towardsdatascience.com/using-the-spotify-api-with-your-android-application-the-essentials-1a3c1bc36b9e
