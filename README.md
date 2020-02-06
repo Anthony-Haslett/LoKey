@@ -1,6 +1,5 @@
-Project LoKey
-
 ![Android CI](https://github.com/Anthony-Haslett/LoKey/workflows/Android%20CI/badge.svg)
+Project LoKey
 
 Upcoming features:
 - Location: Google Maps
