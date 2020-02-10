@@ -61,4 +61,7 @@ dependencies {
 
     implementation project(':spotify-app-remote')
     implementation "com.google.code.gson:gson:2.8.5"
+
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
 }
