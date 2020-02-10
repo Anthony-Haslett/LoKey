@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,12 +14,14 @@ import android.view.MenuItem;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.api.internal.ConnectionCallbacks;
 import com.google.android.gms.common.api.internal.GoogleApiManager;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationListener;
@@ -36,11 +39,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import static com.project.lokey.Constants.AREA_LANDMARKS;
 
 public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -73,6 +82,7 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).build();
 
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_LOCATION_PERMISSION_CODE);
@@ -88,20 +98,34 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
                 .setFastestInterval(1000)
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         try {
-            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
 
-                    if (currentLocationMarker != null) {
-                        currentLocationMarker.remove();
-                    }
-                    markerOptions = new MarkerOptions();
-                    markerOptions.position(new LatLng(location.getLatitude(), location.getLongitude()));
-                    markerOptions.title("Current Location");
-                    currentLocationMarker = googleMap.addMarker(markerOptions);
-                    Log.d(TAG, "Location Change Lat Lng " + location.getLatitude() + " " + location.getLongitude());
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, location -> {
+
+                if (currentLocationMarker != null) {
+                    currentLocationMarker.remove();
                 }
+                markerOptions = new MarkerOptions();
+                markerOptions.position(new LatLng(location.getLatitude(), location.getLongitude()));
+                markerOptions.title("Current Location");
+                currentLocationMarker = googleMap.addMarker(markerOptions);
+
+                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                // geofence update
+                Log.d(TAG, "Location Change Lat Lng " + location.getLatitude() + " " + location.getLongitude());
             });
+
+            FusedLocationProviderClient client =
+                    LocationServices.getFusedLocationProviderClient(this);
+            client.getLastLocation()
+                    .addOnCompleteListener(this, new OnCompleteListener<Location>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Location> task) {
+                            // ...
+                        }
+                    });
+
         } catch (SecurityException e) {
             Log.d(TAG, e.getMessage());
         }
@@ -140,7 +164,15 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
 
     @NonNull
     private Geofence getGeofence() {
-        LatLng latLng = Constants.AREA_LANDMARKS.get(Constants.GEOFENCE_ID);
+
+        // one button save my location
+        // set latLong based on my saved location
+
+        LatLng latLng = new LatLng(Objects.requireNonNull(AREA_LANDMARKS.get(Constants.GEOFENCE_ID)).longitude,
+                Objects.requireNonNull(AREA_LANDMARKS.get(Constants.GEOFENCE_ID)).latitude);
+
+
+
         return new Geofence.Builder()
                 .setRequestId(Constants.GEOFENCE_ID)
                 .setExpirationDuration(Geofence.NEVER_EXPIRE)
@@ -216,7 +248,6 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.geofence:
-                startGeofencing();
                 break;
             case R.id.clear:
                 stopGeoFencing();
@@ -241,7 +272,9 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
         }
 
         this.googleMap = googleMap;
-        LatLng latLng = Constants.AREA_LANDMARKS.get(Constants.GEOFENCE_ID);
+        LatLng latLng = AREA_LANDMARKS.get(Constants.GEOFENCE_ID);
+
+
         googleMap.addMarker(new MarkerOptions().position(latLng).title("UNI"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17f));
 
@@ -257,7 +290,6 @@ public class ActivityGeo extends AppCompatActivity implements OnMapReadyCallback
                 .add(new LatLng(0, 0), new LatLng(0, 5), new LatLng(54.4707, -3.2734), new LatLng(53.4707, -2.2734))
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
-
     }
 
     @Override

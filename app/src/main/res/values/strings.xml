@@ -76,5 +76,7 @@
 
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
+    <string name="channel_description">lokey notification</string>
+    <string name="channel_name">lokey_notification</string>
 
 </resources>

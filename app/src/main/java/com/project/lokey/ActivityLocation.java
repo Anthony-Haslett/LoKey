@@ -211,20 +211,6 @@ public class ActivityLocation extends FragmentActivity
             locationTv.setText("Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
             song.start();
         }
-
-//        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
-//            if (location != null) {
-//                // Logic to handle location object
-//                LocationServices.ge
-//            } else {
-//                // Handle null case or request periodic updates
-//                mLocationRequest.setInterval(1000);
-//            }
-//        });
-
-//        LocationServices l = LocationServices.getFusedLocationProviderClient(this).getLastLocation();
-
-        startLocationUpdates();
     }
 
     private void startLocationUpdates() {
@@ -241,8 +227,6 @@ public class ActivityLocation extends FragmentActivity
         }
 
         LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, new LocationCallback(), null);
-
-//        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationRequest, (com.google.android.gms.location.LocationListener) this);
     }
 
     @Override
