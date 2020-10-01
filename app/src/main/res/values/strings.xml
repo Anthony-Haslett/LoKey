@@ -59,6 +59,8 @@
         Geofence transition error: invalid transition type %1$d
     </string>
 
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
     <!-- Transition type strings -->
     <string name="geofence_transition_entered">Entered</string>
     <string name="geofence_transition_exited">Exited</string>
@@ -78,5 +80,6 @@
     <string name="action_reply">Reply</string>
     <string name="channel_description">lokey notification</string>
     <string name="channel_name">lokey_notification</string>
+    <string name="fcm_message">FCM Message</string>
 
 </resources>

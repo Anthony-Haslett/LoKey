@@ -25,14 +25,21 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.google.android.gms.location.LocationServices.*;
 
 public class ActivityLocation extends FragmentActivity
         implements GoogleApiClient.ConnectionCallbacks,
                     GoogleApiClient.OnConnectionFailedListener,
+                    OnMapReadyCallback,
                     LocationListener {
 
     private final String TAG = "LoKey";
@@ -41,7 +48,7 @@ public class ActivityLocation extends FragmentActivity
     private Location location;
     private TextView locationTv;
 
-    MediaPlayer song;
+//    MediaPlayer song;
 
     // lists for permissions
     private ArrayList<String> permissionsToRequest;
@@ -91,7 +98,26 @@ public class ActivityLocation extends FragmentActivity
 
         fusedLocationClient = getFusedLocationProviderClient(this);
 
-        song = MediaPlayer.create(this, R.raw.blessed);
+//        song = MediaPlayer.create(this, R.raw.blessed);
+
+        // FCM Messaging
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "getInstanceId failed", task.getException());
+                        return;
+                    }
+
+                    // Get new Instance ID token
+                    String token = Objects.requireNonNull(task.getResult()).getToken();
+
+                    // Log and toast
+//                        String msg = getString(R.string.msg_token_fmt, token);
+                    String msg = "FCM Messaging! \n Token:" + token;
+                    Log.d("FCM Token:", token);
+                    Log.d(TAG, msg);
+                    Toast.makeText(ActivityLocation.this, msg, Toast.LENGTH_SHORT).show();
+                });
     }
 
     private ArrayList<String> permissionsToRequest(ArrayList<String> wantedPermissions) {
@@ -195,6 +221,8 @@ public class ActivityLocation extends FragmentActivity
 
     }
 
+
+
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this,
@@ -209,7 +237,7 @@ public class ActivityLocation extends FragmentActivity
 
         if (fusedLocationClient != null) {
             locationTv.setText("Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
-            song.start();
+//            song.start();
         }
     }
 
@@ -274,5 +302,10 @@ public class ActivityLocation extends FragmentActivity
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52, 53), 17f));
     }
 }

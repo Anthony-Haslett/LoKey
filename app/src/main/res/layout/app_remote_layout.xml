@@ -167,31 +167,33 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/toggle_shuffle_button"
-        android:layout_width="56dp"
-        android:layout_height="95dp"
+        android:layout_width="58dp"
+        android:layout_height="61dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onToggleShuffleButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.192"
+        app:layout_constraintVertical_bias="0.08"
         app:srcCompat="@drawable/btn_shuffle" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/seek_back_button"
-        android:layout_width="69dp"
-        android:layout_height="79dp"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onSeekBack"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.279"
+        app:layout_constraintVertical_bias="0.08"
         app:srcCompat="@drawable/btn_seek_back" />
+
+    <!-- Connect Auth -->
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/skip_prev_button"
@@ -201,10 +203,10 @@
         android:onClick="onSkipPreviousButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.365"
+        app:layout_constraintVertical_bias="0.096"
         app:srcCompat="@drawable/btn_prev" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -215,10 +217,10 @@
         android:onClick="onPlayPauseButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.38"
+        app:layout_constraintVertical_bias="0.1"
         app:srcCompat="@drawable/btn_play" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -229,41 +231,39 @@
         android:onClick="onSkipNextButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.404"
+        app:layout_constraintVertical_bias="0.106"
         app:srcCompat="@drawable/btn_next" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/seek_forward_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="62dp"
+        android:layout_height="67dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onSeekForward"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.80"
+        app:layout_constraintHorizontal_bias="0.79"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@drawable/btn_seek_forward" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/toggle_repeat_button"
-        android:layout_width="48dp"
-        android:layout_height="96dp"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
         android:background="?attr/actionBarItemBackground"
         android:onClick="onToggleRepeatButtonClicked"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.991"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seek_to"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.086"
         app:srcCompat="@drawable/btn_repeat" />
-
-    <!-- Connect Auth -->
 
     <LinearLayout
         android:id="@+id/linearLayout"
